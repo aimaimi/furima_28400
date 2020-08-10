@@ -8,8 +8,11 @@ class User < ApplicationRecord
   katakana = /\A[ァ-ン]+\z/
   alphanumeric = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/
 
-  validates :nickname,     presence: true
-
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
+  end
+  
   validates :password,     format: { with: alphanumeric, message: 'パスワードには英字と数字を混ぜてください' }
 
   with_options presence: true, format: { with: zenkaku, message: '全角文字を使用してください' } do
@@ -21,6 +24,5 @@ class User < ApplicationRecord
     validates :second_kana
     validates :first_kana
   end
-
-  validates :birthday, presence: true
+  
 end
