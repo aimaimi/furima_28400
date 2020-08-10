@@ -10,17 +10,17 @@ class User < ApplicationRecord
 
   validates :nickname,     presence: true
 
-  validates :password,     format: { with: alphanumeric, message: "パスワードには英字と数字を混ぜてください"}
+  validates :password,     format: { with: alphanumeric, message: 'パスワードには英字と数字を混ぜてください' }
 
-  with_options presence: true, format: { with: zenkaku, message: "全角文字を使用してください" } do
+  with_options presence: true, format: { with: zenkaku, message: '全角文字を使用してください' } do
     validates :second_name
     validates :first_name
   end
 
-  with_options presence: true, format: { with: katakana, message: "全角カタカナを使用してください"} do
+  with_options presence: true, format: { with: katakana, message: '全角カタカナを使用してください' } do
     validates :second_kana
     validates :first_kana
   end
 
-  validates :birthday,     presence: true
+  validates :birthday, presence: true
 end
