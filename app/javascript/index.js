@@ -3,9 +3,9 @@ window.addEventListener('load', function(){
   const fee = document.getElementById("add-tax-price")
   const gain = document.getElementById("profit")
 
-  priceForm.oninput = priceDisplay;
+  priceForm.oninput = pricedisplay;
 
-  function priceDisplay(){
+  function pricedisplay(){
       fee.innerHTML = 100
       gain.innerHTML = 900
   }
