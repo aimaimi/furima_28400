@@ -8,9 +8,20 @@ class Item < ApplicationRecord
 
   has_one_attached :image
 
-  validates :image, :price, :name, :explanation, :category, :status, :shipping_fee, :shipping_area, :days_until_shipping, presence: true
+  with_options presence: true do
+    validates :image
+    validates :price
+    validates :name
+    validates :explanation
+  end
 
-  validates :category_id, :status_id, :shipping_fee_id, :shipping_area_id, :days_until_shipping_id, numericality: { other_than: 1 }
+  with_options presence: true, numericality: { other_than: 1 } do
+    validates :category_id
+    validates :status_id
+    validates :shipping_fee_id
+    validates :shipping_area_id
+    validates :days_until_shipping_id
+  end
 
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
 end
