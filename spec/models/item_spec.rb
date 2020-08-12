@@ -33,46 +33,37 @@ RSpec.describe Item, type: :model do
     it 'category_idが1では出品できないこと' do
       @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
     it 'status_idが1では出品できないこと' do
       @item.status_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status must be other than 1")
+      expect(@item.errors.full_messages).to include('Status must be other than 1')
     end
     it 'shipping_fee_idが1では出品できないこと' do
       @item.shipping_fee_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping fee must be other than 1")
+      expect(@item.errors.full_messages).to include('Shipping fee must be other than 1')
     end
     it 'shipping_area_idが1では出品できないこと' do
       @item.shipping_area_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping area must be other than 1")
+      expect(@item.errors.full_messages).to include('Shipping area must be other than 1')
     end
     it 'days_until_shipping_idが1では出品できないこと' do
       @item.days_until_shipping_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Days until shipping must be other than 1")
+      expect(@item.errors.full_messages).to include('Days until shipping must be other than 1')
     end
     it 'priceが３００円以上であること' do
       @item.price = 200
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be greater than 299")
+      expect(@item.errors.full_messages).to include('Price must be greater than 299')
     end
     it 'priceが９，９９９，９９９円以下であること' do
-      @item.price = 100000000
+      @item.price = 100_000_000
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+      expect(@item.errors.full_messages).to include('Price must be less than 10000000')
     end
-
-
-
-
-
-
-
-
   end
 end
-
