@@ -3,10 +3,8 @@ window.addEventListener('load', function(){
   const fee = document.getElementById("add-tax-price")
   const gain = document.getElementById("profit")
 
-  priceForm.oninput = pricedisplay;
-
-  function pricedisplay(){
-      fee.innerHTML = 100
-      gain.innerHTML = 900
-  }
+  priceForm.addEventListener('click', function (){
+    fee.innerHTML = priceForm.innerHTML / 10 ;
+    gain.innerHTML = priceForm.innerHTML - fee.innerHTML ;
+  })
 })
