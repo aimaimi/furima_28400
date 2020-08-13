@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :redirect_index, except: [:index,:show]
+  before_action :redirect_index, except: [:index, :show]
 
   def index
     @items = Item.all
