@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one :item
+  has_one :order
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
