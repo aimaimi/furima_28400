@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :items
+  has_many :orders
+
   zenkaku = /\A[ぁ-んァ-ン一-龥]+\z/
   katakana = /\A[ァ-ン]+\z/
   alphanumeric = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/
