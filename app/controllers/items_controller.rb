@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :redirect_index, except: [:index, :show]
+  before_action :redirect_show, only: [:edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -33,5 +34,12 @@ class ItemsController < ApplicationController
 
   def redirect_index
     redirect_to action: :index unless user_signed_in?
+  end
+
+  def redirect_show
+    @item = Item.find(params[:id])
+    if current_user.id != @item.user_id
+      redirect_to action: :show
+    end
   end
 end
