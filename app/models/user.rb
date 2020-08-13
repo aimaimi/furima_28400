@@ -12,8 +12,8 @@ class User < ApplicationRecord
     validates :nickname
     validates :birthday
   end
-  
-  validates :password,     format: { with: alphanumeric, message: 'パスワードには英字と数字を混ぜてください' }
+
+  validates :password, format: { with: alphanumeric, message: 'パスワードには英字と数字を混ぜてください' }
 
   with_options presence: true, format: { with: zenkaku, message: '全角文字を使用してください' } do
     validates :second_name
@@ -24,5 +24,4 @@ class User < ApplicationRecord
     validates :second_kana
     validates :first_kana
   end
-  
 end
