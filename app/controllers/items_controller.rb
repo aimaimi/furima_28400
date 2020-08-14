@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :redirect_index, except: [:index, :show]
-  before_action :redirect_show, only: [:edit]
+  before_action :redirect_show, only: [:edit,:destroy]
 
   def index
     @items = Item.all.order('created_at DESC')
