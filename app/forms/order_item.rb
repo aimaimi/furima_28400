@@ -8,22 +8,14 @@ class OrderItem
   month_year = /\A\d{2}\z/
   cvc_number = /\A\d{3,4}\z/
 
-  validates :postal_code, format: { with: include_hyphen, message: 'is invalid.Include hyphen(-)' }
-  validates :phone_number, format: { with: only_number, message: "is invalid.Don't include hyphen(-)" }
-  validates :number, format: { with: card_number }
-  validates :exp_month, format: { with: month_year }
-  validates :exp_year, format: { with: month_year }
-  validates :cvc, format: { with: cvc_number }
+  validates :postal_code, format: { with: include_hyphen, message: 'is invalid.Include hyphen(-).' }
+  validates :phone_number, format: { with: only_number, message: "is invalid.Don't include hyphen(-) or Phone number is within 11 digits." }
 
   with_options presence: true do
-    validates :number
-    validates :exp_month
-    validates :exp_year
-    validates :cvc
     validates :postal_code
     validates :prefecture_id
     validates :city
-    validates :Address
+    validates :address
     validates :phone_number
   end
 
