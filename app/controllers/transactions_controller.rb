@@ -1,4 +1,7 @@
 class TransactionsController < ApplicationController
+  before_action :redirect_login, only: [:index]
+  before_action :redirect_top, only: [:index]
+
   def index
     @item = Item.find(params[:item_id])
   end
@@ -29,5 +32,15 @@ class TransactionsController < ApplicationController
       card: transaction_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def redirect_login
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def redirect_top
+    if current_user.id == Item.find(params[:item_id]).user_id
+      redirect_to "/"
+    end
   end
 end
