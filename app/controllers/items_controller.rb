@@ -59,9 +59,6 @@ class ItemsController < ApplicationController
   end
 
   def redirect_top
-    if Order.exists?(item_id: Item.find(params[:id]).id)
-      redirect_to "/"
-    end
+    redirect_to '/' if Order.exists?(item_id: Item.find(params[:id]).id)
   end
-    
 end
