@@ -1,6 +1,7 @@
 class TransactionsController < ApplicationController
   before_action :redirect_login, only: [:index]
   before_action :redirect_top, only: [:index]
+  before_action :redirect_top_page, only: [:index]
 
   def index
     @item = Item.find(params[:item_id])
@@ -44,6 +45,10 @@ class TransactionsController < ApplicationController
   end
 
   def redirect_top
-    redirect_to '/' if current_user.id == Item.find(params[:item_id]).user_id
+    redirect_to root_path if current_user.id == Item.find(params[:item_id]).user_id
+  end
+
+  def redirect_top_page
+    redirect_to root_path if Order.exists?(item_id: Item.find(params[:item_id]).id)
   end
 end
