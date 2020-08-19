@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :redirect_index, except: [:index, :show]
   before_action :redirect_show, only: [:edit, :destroy]
+  before_action :redirect_top, only: [:show]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -55,5 +56,9 @@ class ItemsController < ApplicationController
   def redirect_show
     @item = Item.find(params[:id])
     redirect_to action: :show if current_user.id != @item.user_id
+  end
+
+  def redirect_top
+    redirect_to root_path if Order.exists?(item_id: Item.find(params[:id]).id)
   end
 end
