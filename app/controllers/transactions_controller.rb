@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @orderitem = OrderItem.new(postal_code: transaction_params[:postal_code], prefecture_id: transaction_params[:prefecture_id], city: transaction_params[:city], address: transaction_params[:address], building: transaction_params[:building], phone_number: transaction_params[:phone_number], item_id: transaction_params[:item_id], user_id: current_user.id)
+    @orderitem = all_transaction_params
     if @orderitem.save
       pay_item
       redirect_to root_path
@@ -24,6 +24,10 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.permit(:token, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :item_id)
+  end
+
+  def all_transaction_params
+    OrderItem.new(postal_code: transaction_params[:postal_code], prefecture_id: transaction_params[:prefecture_id], city: transaction_params[:city], address: transaction_params[:address], building: transaction_params[:building], phone_number: transaction_params[:phone_number], item_id: transaction_params[:item_id], user_id: current_user.id)
   end
 
   def pay_item
