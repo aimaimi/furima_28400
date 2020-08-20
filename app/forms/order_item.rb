@@ -8,8 +8,8 @@ class OrderItem
   month_year = /\A\d{2}\z/
   cvc_number = /\A\d{3,4}\z/
 
-  validates :postal_code, format: { with: include_hyphen, message: 'is invalid.Include hyphen(-).' }
-  validates :phone_number, format: { with: only_number, message: "is invalid.Don't include hyphen(-) or Phone number is within 11 digits." }
+  validates :postal_code, format: { with: include_hyphen, message: 'にはハイフン(-)を含めてください' }
+  validates :phone_number, format: { with: only_number, message: "にはハイフンを含めないでください" }
 
   with_options presence: true do
     validates :postal_code
@@ -19,7 +19,7 @@ class OrderItem
     validates :phone_number
   end
 
-  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
 
   def save
     Order.create(user_id: user_id, item_id: item_id)
