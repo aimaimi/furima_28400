@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
+    @orderitem = OrderItem.new
   end
 
   def new
@@ -13,8 +14,10 @@ class TransactionsController < ApplicationController
 
   def create
     @orderitem = all_transaction_params
-    if @orderitem.save
+    @item = Item.find(params[:item_id])
+    if @orderitem.valid?
       pay_item
+      @orderitem.save
       redirect_to root_path
     else
       render 'index'
