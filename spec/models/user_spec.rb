@@ -13,48 +13,48 @@ RSpec.describe User, type: :model do
     it 'nicknameが空では登録できないこと' do
       @user.nickname = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("ニックネームを入力してください")
+      expect(@user.errors.full_messages).to include('ニックネームを入力してください')
     end
 
     it 'second_nameが空では登録できないこと' do
       @user.second_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("名を入力してください")
+      expect(@user.errors.full_messages).to include('名を入力してください')
     end
     it 'first_nameが空では登録できないこと' do
       @user.first_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("姓を入力してください")
+      expect(@user.errors.full_messages).to include('姓を入力してください')
     end
     it 'second_kanaが空では登録できないこと' do
       @user.second_kana = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("名を入力してください")
+      expect(@user.errors.full_messages).to include('名を入力してください')
     end
     it 'first_kanaが空では登録できないこと' do
       @user.first_kana = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("姓を入力してください")
+      expect(@user.errors.full_messages).to include('姓を入力してください')
     end
     it 'birthdayが空では登録できないこと' do
       @user.birthday = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("誕生日を入力してください")
+      expect(@user.errors.full_messages).to include('誕生日を入力してください')
     end
     it 'emailが空では登録できないこと' do
       @user.email = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Eメールを入力してください")
+      expect(@user.errors.full_messages).to include('Eメールを入力してください')
     end
     it 'passwordが空では登録できないこと' do
       @user.password = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("パスワードを入力してください")
+      expect(@user.errors.full_messages).to include('パスワードを入力してください')
     end
     it 'passwordが存在してもpassword_confirmationが空では登録できないこと' do
       @user.password_confirmation = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
+      expect(@user.errors.full_messages).to include('パスワード（確認用）とパスワードの入力が一致しません')
     end
 
     it 'emailに一意性があること' do

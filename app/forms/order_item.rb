@@ -9,7 +9,7 @@ class OrderItem
   cvc_number = /\A\d{3,4}\z/
 
   validates :postal_code, format: { with: include_hyphen, message: 'にはハイフン(-)を含めてください' }
-  validates :phone_number, format: { with: only_number, message: "にはハイフンを含めないでください" }
+  validates :phone_number, format: { with: only_number, message: 'にはハイフンを含めないでください' }
 
   with_options presence: true do
     validates :postal_code

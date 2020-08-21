@@ -12,7 +12,7 @@ RSpec.describe OrderItem, type: :model do
     it 'postal_codeが空だと保存ができないこと' do
       @order_item.postal_code = nil
       @order_item.valid?
-      expect(@order_item.errors.full_messages).to include("郵便番号を入力してください")
+      expect(@order_item.errors.full_messages).to include('郵便番号を入力してください')
     end
     it 'prefecture_idが1だと保存ができないこと' do
       @order_item.prefecture_id = 1
@@ -22,12 +22,12 @@ RSpec.describe OrderItem, type: :model do
     it 'cityが空だと保存ができないこと' do
       @order_item.city = nil
       @order_item.valid?
-      expect(@order_item.errors.full_messages).to include("市区町村を入力してください")
+      expect(@order_item.errors.full_messages).to include('市区町村を入力してください')
     end
     it 'addressが空だと保存ができないこと' do
       @order_item.address = nil
       @order_item.valid?
-      expect(@order_item.errors.full_messages).to include("番地を入力してください")
+      expect(@order_item.errors.full_messages).to include('番地を入力してください')
     end
     it 'buildingが空でも保存ができること' do
       @order_item.building = nil
@@ -36,7 +36,7 @@ RSpec.describe OrderItem, type: :model do
     it 'phone_numberが空だと保存ができないこと' do
       @order_item.phone_number = nil
       @order_item.valid?
-      expect(@order_item.errors.full_messages).to include("電話番号を入力してください")
+      expect(@order_item.errors.full_messages).to include('電話番号を入力してください')
     end
     it 'postal_codeにはハイフンが必要であること' do
       @order_item.postal_code = '1234567'
@@ -46,7 +46,7 @@ RSpec.describe OrderItem, type: :model do
     it 'phone_numberにはハイフンが不要であること' do
       @order_item.phone_number = '090-1234-5678'
       @order_item.valid?
-      expect(@order_item.errors.full_messages).to include("電話番号にはハイフンを含めないでください")
+      expect(@order_item.errors.full_messages).to include('電話番号にはハイフンを含めないでください')
     end
   end
 end
