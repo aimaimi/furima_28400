@@ -19,7 +19,7 @@ class Item < ApplicationRecord
     validates :explanation
   end
 
-  with_options presence: true, numericality: { other_than: 1 } do
+  with_options presence: true, numericality: { other_than: 1, message: 'を選択してください' } do
     validates :category_id
     validates :status_id
     validates :shipping_fee_id

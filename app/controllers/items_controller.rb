@@ -56,7 +56,4 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     redirect_to action: :show if current_user.id != @item.user_id
   end
-
-  
-
 end
